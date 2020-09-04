@@ -1,4 +1,8 @@
 ﻿using DeviceStore.Domain.AbstractModel;
+using DeviceStore.Domain.Entities;
+using DeviceStore.WebUI.ViewModel;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace DeviceStore.WebUI.Controllers
@@ -12,9 +16,14 @@ namespace DeviceStore.WebUI.Controllers
             _deviceRepository = deviceRepository;
         }
 
-        public ActionResult Index()
+        public ViewResult Index(string categoryDevices)
         {
-            return View(_deviceRepository.Devices);
+            var filteredDevicesList = new FilteredDevicesList();           
+
+            filteredDevicesList.CurrentCategory = categoryDevices;
+
+            return View(_deviceRepository.Devices
+                       .Where(c => categoryDevices == null || c.DeviceCategory == categoryDevices));
         }
 
         public ActionResult About()
