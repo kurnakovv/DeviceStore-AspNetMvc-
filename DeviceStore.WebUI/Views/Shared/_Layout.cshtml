@@ -33,6 +33,15 @@
     <div id="categories">
         @Html.Action("CategoryMenu", "Navigation")
     </div>
+    <div id="search">
+        @using (Html.BeginForm("DevicesSearch", "Home"))
+        {
+            <p>
+                @Html.TextBox("deviceName") <br />
+                <input type="submit" value="Поиск устройства" />
+            </p>
+        }
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

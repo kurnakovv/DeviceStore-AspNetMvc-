@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DeviceStore.Domain.Entities.Device>
+@using DeviceStore.Domain.Entities
+
+<div>
+
+    @foreach (Device d in @Model)
+    {
+            <div>
+                <h3>@d.DeviceName</h3>
+                <p>@d.DeviceDescription</p>
+                <h4>@d.DevicePrice.ToString("# руб.")</h4>
+            </div>
+    }
+</div>

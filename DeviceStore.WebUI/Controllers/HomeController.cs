@@ -1,6 +1,7 @@
 ﻿using DeviceStore.Domain.AbstractModel;
 using DeviceStore.Domain.Entities;
 using DeviceStore.WebUI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -24,6 +25,24 @@ namespace DeviceStore.WebUI.Controllers
 
             return View(_deviceRepository.Devices
                        .Where(c => categoryDevices == null || c.DeviceCategory == categoryDevices));
+        }
+
+        public ActionResult DevicesSearch(string deviceName)
+        {
+            IEnumerable<Device> device = from m in _deviceRepository.Devices
+                                         select m;
+
+            if (!string.IsNullOrEmpty(deviceName))
+            {
+                device = device.Where(s => s.DeviceName.Contains(deviceName));
+            }
+            else
+            {
+                // TODO: Devices not found (finish up)
+                return View("DevicesNotFound");
+            }
+
+            return View(device);
         }
 
         public ActionResult About()

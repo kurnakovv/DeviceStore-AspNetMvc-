@@ -259,6 +259,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Navigation\CategoryMenu.cshtml" />
+    <Content Include="Views\Home\DevicesSearch.cshtml" />
+    <Content Include="Views\Shared\DevicesNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceStore.Domain\DeviceStore.Domain.csproj">
