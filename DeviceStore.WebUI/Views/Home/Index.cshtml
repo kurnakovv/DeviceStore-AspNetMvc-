@@ -1,15 +1,26 @@
-﻿@using DeviceStore.Domain.Entities
-@model IEnumerable<Device>
+﻿@using DeviceStore.WebUI.ViewModel
+@using DeviceStore.Domain.Entities
+@model FilteredDevicesList
 
 @{ 
     ViewBag.Title = "DeviceStore";
 }
 
-@foreach(Device d in @Model)
+@foreach(Device d in @Model.Devices)
 {
     <div>
         <h3>@d.DeviceName</h3>
-        <p>@d.DeviceDescription</p>
+        <h3>@d.DeviceCategory</h3>
+        <p>@d.DeviceDescription</p>        
         <h4>@d.DevicePrice.ToString("# руб.")</h4>
     </div>
 }
+
+<div>
+    @Html.GeneratesHtmlForPageLinks(Model.PagingInfo, x => Url.Action("Index",
+     new
+     {
+         categoryDevices = Model.CurrentCategory,
+         page = x,
+     }))
+</div>

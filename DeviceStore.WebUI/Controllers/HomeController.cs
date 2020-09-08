@@ -1,5 +1,6 @@
 ﻿using DeviceStore.Domain.AbstractModel;
 using DeviceStore.Domain.Entities;
+using DeviceStore.WebUI.Models;
 using DeviceStore.WebUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,20 +12,37 @@ namespace DeviceStore.WebUI.Controllers
     public class HomeController : Controller
     {
         private IDeviceRepository _deviceRepository;
+        public int pageSize = 5;
 
         public HomeController(IDeviceRepository deviceRepository)
         {
             _deviceRepository = deviceRepository;
         }
 
-        public ViewResult Index(string categoryDevices)
+        public ViewResult Index(string categoryDevices, int page = 1)
         {
-            var filteredDevicesList = new FilteredDevicesList();           
+            FilteredDevicesList filteredDevicesList = new FilteredDevicesList
+            {
+                CurrentCategory = categoryDevices,
 
-            filteredDevicesList.CurrentCategory = categoryDevices;
+                Devices = _deviceRepository.Devices.
+                        Where(c => categoryDevices == null
+                              || c.DeviceCategory == categoryDevices)
+                        .OrderBy(device => device.DeviceId)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize),
 
-            return View(_deviceRepository.Devices
-                       .Where(c => categoryDevices == null || c.DeviceCategory == categoryDevices));
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    DevicesPerPage = pageSize,
+                    TotalDevices = categoryDevices == null ?
+                    _deviceRepository.Devices.Count() :
+                    _deviceRepository.Devices.Where(device => device.DeviceCategory == categoryDevices).Count()
+                },
+            };
+
+            return View(filteredDevicesList);
         }
 
         public ActionResult DevicesSearch(string deviceName)
