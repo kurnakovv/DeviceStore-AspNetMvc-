@@ -1,5 +1,8 @@
 ﻿using DeviceStore.Domain.AbstractModel;
 using DeviceStore.Domain.EFConcrete;
+using DeviceStore.Domain.Entities;
+using DeviceStore.Domain.Services;
+using DeviceStore.Domain.Services.Interfaces;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -32,6 +35,10 @@ namespace DeviceStore.WebUI.Infrastructure
         private void AddBindings()
         {
             _kernel.Bind<IDeviceRepository>().To<DeviceRepository>();
+            _kernel.Bind<IBasketService>().To<BasketService>();
+            _kernel.Bind<IRepository<Basket>>().To<MemoryRepository<Basket>>();
+            _kernel.Bind<IRepository<BasketItem>>().To<MemoryRepository<BasketItem>>();
+            _kernel.Bind<IRepository<Device>>().To<MemoryRepository<Device>>();
         }
     }
 }

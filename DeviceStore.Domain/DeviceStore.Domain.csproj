@@ -46,6 +46,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -73,10 +75,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractModel\IDeviceRepository.cs" />
+    <Compile Include="AbstractModel\IRepository.cs" />
     <Compile Include="EFConcrete\AppDbContext.cs" />
     <Compile Include="EFConcrete\DeviceRepository.cs" />
+    <Compile Include="EFConcrete\MemoryRepository.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Basket.cs" />
+    <Compile Include="Entities\BasketItem.cs" />
     <Compile Include="Entities\Device.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BasketService.cs" />
+    <Compile Include="Services\Interfaces\IBasketService.cs" />
+    <Compile Include="ViewModel\BasketIndexViewModel.cs" />
+    <Compile Include="ViewModel\BasketItemViewModel.cs" />
+    <Compile Include="ViewModel\BasketSummaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
