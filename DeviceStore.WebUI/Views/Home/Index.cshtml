@@ -13,6 +13,7 @@
         <h3>@d.DeviceCategory</h3>
         <p>@d.DeviceDescription</p>        
         <h4>@d.DevicePrice.ToString("# руб.")</h4>
+        <a href="@Url.Action("AddToBasket", "Basket", new { Id = d.Id })">Добавить в корзину</a>
     </div>
 }
 

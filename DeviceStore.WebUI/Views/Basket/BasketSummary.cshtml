@@ -1,0 +1,21 @@
+﻿@model DeviceStore.Domain.ViewModel.BasketSummaryViewModel
+
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="@Url.Action("Index", "Basket")">@Model.BasketItems Штук</a></li>
+    <li><a href="@Url.Action("Index", "Basket")">@String.Format("{0:c}", Model.BasketTotal)</a></li>
+</ul>
+
+<div class="navbar-right hidden-xs">
+    <a href=@Url.Action("Index", "Basket") class="btn btn-warning navbar-btn">
+        <span class="glyphicon glyphicon-shopping-cart text-right">
+            Корзина
+        </span>
+    </a>
+</div>
+
+<div class="navbar-right visible-xs">
+    <a href=@Url.Action("Index", "Basket") class="btn btn-warning navbar-btn">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+    </a>
+
+</div>

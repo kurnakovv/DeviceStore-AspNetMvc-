@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DeviceStore.Domain.ViewModel.BasketItemViewModel>
+@using DeviceStore.Domain.ViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    h3{
+        color: red;
+    }
+</style>
+
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantityDevicesItems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Конечная сумма
+            </th>
+
+        </tr>
+
+        @if (Model.ToList().Count() != 0)
+        {
+            foreach (BasketItemViewModel item in Model)
+            {
+                <tr>
+                    <td>
+                        <img class="img" style="height:50px" src="~/Content/ProductImages/@item.Image" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeviceName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantityDevicesItems)
+                    </td>
+                    <td>
+                        @String.Format("{0:c}", item.Price)
+                    </td>
+                    <td>
+                        @String.Format("{0:c}", item.Price * item.QuantityDevicesItems)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("RemoveFromBasket", "Basket", new { Id = item.BasketItemId })" class="btn btn-danger">Удалить</a>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4" style="text-align:right"><strong>Всего в корзине</strong></td>
+                <td>@String.Format("{0:c}", (from d in Model select d.QuantityDevicesItems * d.Price).Sum())</td>
+            </tr>                     
+            }
+        else
+        {
+            <h3 class="text-center ">Корзина пуста.</h3>
+        }
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-warning" href="~/Home/Index">Продолжить покупки</a>
+        @if (Model.ToList().Count() == 0) { }
+        @if (Model.ToList().Count() != 0)
+        {
+            @Html.ActionLink("Оформить заказ", null, null, null, new { @class = "btn btn-success" })
+        }
+    </div>
+
