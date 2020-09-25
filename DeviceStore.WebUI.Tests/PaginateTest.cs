@@ -23,12 +23,12 @@ namespace DeviceStore.WebUI.Tests
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
-                new Device {DeviceId = 1, DeviceName = "Device1", },
-                new Device {DeviceId = 2, DeviceName = "Device2", },
-                new Device {DeviceId = 3, DeviceName = "Device3", },
-                new Device {DeviceId = 4, DeviceName = "Device4", },
-                new Device {DeviceId = 5, DeviceName = "Device5", },
-                new Device {DeviceId = 6, DeviceName = "Device6", },
+                new Device { Id = "1", DeviceName = "Device1", },
+                new Device { Id = "2", DeviceName = "Device2", },
+                new Device { Id = "3", DeviceName = "Device3", },
+                new Device { Id = "4", DeviceName = "Device4", },
+                new Device { Id = "5", DeviceName = "Device5", },
+                new Device { Id = "6", DeviceName = "Device6", },
             });
 
             HomeController homeController = new HomeController(mock.Object);
@@ -72,12 +72,12 @@ namespace DeviceStore.WebUI.Tests
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
-                new Device {DeviceId = 1, DeviceName = "Device1", },
-                new Device {DeviceId = 2, DeviceName = "Device2", },
-                new Device {DeviceId = 3, DeviceName = "Device3", },
-                new Device {DeviceId = 4, DeviceName = "Device4", },
-                new Device {DeviceId = 5, DeviceName = "Device5", },
-                new Device {DeviceId = 6, DeviceName = "Device6", },
+                new Device { Id = "1", DeviceName = "Device1", },
+                new Device { Id = "2", DeviceName = "Device2", },
+                new Device { Id = "3", DeviceName = "Device3", },
+                new Device { Id = "4", DeviceName = "Device4", },
+                new Device { Id = "5", DeviceName = "Device5", },
+                new Device { Id = "6", DeviceName = "Device6", },
             });
 
             HomeController homeController = new HomeController(mock.Object);

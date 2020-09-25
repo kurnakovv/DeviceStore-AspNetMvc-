@@ -28,7 +28,7 @@ namespace DeviceStore.WebUI.Controllers
                 Devices = _deviceRepository.Devices.
                         Where(c => categoryDevices == null
                               || c.DeviceCategory == categoryDevices)
-                        .OrderBy(device => device.DeviceId)
+                        .OrderBy(device => device.Id)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize),
 

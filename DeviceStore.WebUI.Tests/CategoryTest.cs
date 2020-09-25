@@ -23,9 +23,9 @@ namespace DeviceStore.WebUI.Tests
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
-                new Device {DeviceId = 1, DeviceName = "Device", DeviceCategory = "Category"},
-                new Device {DeviceId = 2, DeviceName = "1212Device", DeviceCategory = "Category"},
-                new Device {DeviceId = 3, DeviceName = "322", DeviceCategory = "Cat"},
+                new Device {Id = "1", DeviceName = "Device", DeviceCategory = "Category"},
+                new Device {Id = "2", DeviceName = "1212Device", DeviceCategory = "Category"},
+                new Device {Id = "3", DeviceName = "322", DeviceCategory = "Cat"},
             });
             HomeController controller = new HomeController(mock.Object);
 
@@ -44,10 +44,10 @@ namespace DeviceStore.WebUI.Tests
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
-                new Device {DeviceId = 1, DeviceName = "Device1", DeviceCategory = "ПК"},
-                new Device {DeviceId = 2, DeviceName = "Device2", DeviceCategory = "ПК"},
-                new Device {DeviceId = 3, DeviceName = "Device3", DeviceCategory = "Смарт часы"},
-                new Device {DeviceId = 4, DeviceName = "Device4", DeviceCategory = "Нетбуки"},
+                new Device {Id = "1", DeviceName = "Device1", DeviceCategory = "ПК"},
+                new Device {Id = "2", DeviceName = "Device2", DeviceCategory = "ПК"},
+                new Device {Id = "3", DeviceName = "Device3", DeviceCategory = "Смарт часы"},
+                new Device {Id = "4", DeviceName = "Device4", DeviceCategory = "Нетбуки"},
             });
             NavigationController controller = new NavigationController(mock.Object);
 

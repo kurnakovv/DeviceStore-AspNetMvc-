@@ -8,10 +8,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DeviceStore.Domain.Entities
 {
-    public class Device
+    public class Device : BaseEntity
     {
-        [HiddenInput(DisplayValue = false)]
-        public int DeviceId { get; set; }
 
         [Required(ErrorMessage = "Укажите название устройства!")]
         [Display(Name = "Название")]        
