@@ -10,5 +10,7 @@ namespace DeviceStore.Domain.AbstractModel
     public interface IDeviceRepository
     {
         IEnumerable<Device> Devices { get; }
+        void SaveOrEditDevice(Device device);
+        Device DeleteDevice(string deviceId);
     }
 }
