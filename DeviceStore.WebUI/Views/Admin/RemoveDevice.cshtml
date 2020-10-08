@@ -1,0 +1,42 @@
+﻿@model DeviceStore.Domain.Entities.Device
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Вы уверены что хотите удалить модель устройства "@Model.DeviceName"?</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Описание:</dt>
+            <dd>@Html.DisplayFor(model => model.DeviceDescription)<hr /></dd>
+
+            <dt>Категория:</dt>
+            <dd>@Html.DisplayFor(model => model.DeviceCategory)<hr /></dd>
+
+            <dt>Количество:</dt>
+            <dd>@Html.DisplayFor(model => model.DeviceQuantity)<hr /></dd>
+
+
+            <dt>Цена:</dt>
+            <dd>@Html.DisplayFor(model => model.DevicePrice)<hr /></dd>
+
+
+            <dt>Фотография:</dt>
+            <dd>
+                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@Model.DeviceImage" />
+            </dd>
+
+            <dd class="text-right">
+                @using (Html.BeginForm("RemoveDevice", "Admin"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("Id", Model.Id)
+                    <input type="submit"
+                           class="btn btn-danger"
+                           value="Удалить">
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+

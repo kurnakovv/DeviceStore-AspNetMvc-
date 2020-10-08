@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Device>
+@using DeviceStore.Domain.Entities
+
+@{
+    ViewBag.Title = "Index";
+}
+    <div id="message">
+        @if (TempData["messageEdit"] != null)
+        {
+            <div class="alert alert-success">@TempData["messageEdit"]</div>
+        }
+        else if (TempData["messageRemove"] != null)
+        {
+            <div class="alert alert-danger">@TempData["messageRemove"]</div>
+        }
+    </div>
+
+<div id="modelDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<p>
+    @Html.ActionLink("Создать новое устройство", "CreateDevice")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DevicePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceImage)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevicePrice)
+            </td>
+            <td>
+                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@item.DeviceImage" />
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "EditDevice", new { id = item.Id }) |
+                @Html.ActionLink("Подробнее", "DetailsDevice", new { id = item.Id }, new { @class = "deviceEdit" }) |
+                @Html.ActionLink("Удалить", "RemoveDevice", new { id = item.Id }, new { @class = "deviceDelete"})
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts
+{
+    <script src="~/Scripts/window.js"></script>
+}
+

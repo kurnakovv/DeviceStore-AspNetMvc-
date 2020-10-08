@@ -1,0 +1,34 @@
+﻿@model DeviceStore.Domain.Entities.Device
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Модель устройства "@Model.DeviceName"</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Описание:</dt>
+            <dd>@Html.DisplayFor(model => model.DeviceDescription)<hr /></dd>
+
+            <dt>Категория:</dt>
+            <dd>@Html.DisplayFor(model => model.DeviceCategory)<hr /></dd>
+
+            <dt>Количество:</dt>
+            <dd>@Html.DisplayFor(model => model.DeviceQuantity)<hr /></dd>
+            
+
+            <dt>Цена:</dt>
+            <dd>@Html.DisplayFor(model => model.DevicePrice)<hr /></dd>
+            
+
+            <dt>Фотография:</dt>
+            <dd>
+                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@Model.DeviceImage" />
+            </dd>
+
+            <dd class="text-right">
+                @Html.ActionLink("Изменить", "EditDevice", new { id = Model.Id }, new { @class = "btn btn-success" })
+            </dd>
+        </dl>
+    </div>
+</div>

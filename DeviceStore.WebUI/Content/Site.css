@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.mini-img-with-orange-border{
+    height: 100px;
+    width: 100px;
+    border: 2px solid #ff6a00;
+}
+
+.default-img{
+    height: 150px;
+    width: 150px;
+}
