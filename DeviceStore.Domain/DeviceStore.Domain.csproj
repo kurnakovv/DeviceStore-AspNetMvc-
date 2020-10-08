@@ -84,9 +84,10 @@
     <Compile Include="Entities\BasketItem.cs" />
     <Compile Include="Entities\Device.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\BasketService.cs" />
+    <Compile Include="Services\Interfaces\IAdminService.cs" />
     <Compile Include="Services\Interfaces\IBasketService.cs" />
-    <Compile Include="ViewModel\BasketIndexViewModel.cs" />
     <Compile Include="ViewModel\BasketItemViewModel.cs" />
     <Compile Include="ViewModel\BasketSummaryViewModel.cs" />
   </ItemGroup>
