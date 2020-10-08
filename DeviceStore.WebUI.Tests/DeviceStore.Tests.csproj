@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminTest.cs" />
     <Compile Include="BasketTest.cs" />
     <Compile Include="HttpContext.cs" />
     <Compile Include="MemoryRepository.cs" />
