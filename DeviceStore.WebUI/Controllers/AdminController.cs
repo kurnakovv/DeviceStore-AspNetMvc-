@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace DeviceStore.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly IDeviceRepository _deviceRepository;
