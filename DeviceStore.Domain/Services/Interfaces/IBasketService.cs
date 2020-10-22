@@ -14,5 +14,6 @@ namespace DeviceStore.Domain.Services.Interfaces
         void RemoveFromBasket(HttpContextBase httpContextBase, string itemId);
         List<BasketItemViewModel> GetBasketItems(HttpContextBase httpContextBase);
         BasketSummaryViewModel GetBasketSummary(HttpContextBase httpContext);
+        void ClearBasket(HttpContextBase httpContextBase);
     }
 }

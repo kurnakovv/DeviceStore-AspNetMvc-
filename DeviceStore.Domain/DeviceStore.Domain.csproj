@@ -82,12 +82,17 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Basket.cs" />
     <Compile Include="Entities\BasketItem.cs" />
+    <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Device.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\BasketService.cs" />
     <Compile Include="Services\Interfaces\IAdminService.cs" />
     <Compile Include="Services\Interfaces\IBasketService.cs" />
+    <Compile Include="Services\Interfaces\IOrderService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="ViewModel\BasketItemViewModel.cs" />
     <Compile Include="ViewModel\BasketSummaryViewModel.cs" />
   </ItemGroup>

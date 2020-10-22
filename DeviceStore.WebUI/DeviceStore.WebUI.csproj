@@ -373,6 +373,8 @@
     <Content Include="Views\Admin\EditDevice.cshtml" />
     <Content Include="Views\Admin\DetailsDevice.cshtml" />
     <Content Include="Views\Admin\RemoveDevice.cshtml" />
+    <Content Include="Views\Basket\ToOrder.cshtml" />
+    <Content Include="Views\Basket\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceStore.Domain\DeviceStore.Domain.csproj">

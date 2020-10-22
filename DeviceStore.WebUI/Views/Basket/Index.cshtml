@@ -66,9 +66,9 @@
     <div class="text-center">
         <a class="btn btn-warning" href="~/Home/Index">Продолжить покупки</a>
         @if (Model.ToList().Count() == 0) { }
-        @if (Model.ToList().Count() != 0)
+        else if(Model.ToList().Count() != 0)
         {
-            @Html.ActionLink("Оформить заказ", null, null, null, new { @class = "btn btn-success" })
+            @Html.ActionLink("Оформить заказ", "ToOrder", "Basket", null, new { @class = "btn btn-success" })
         }
     </div>
 
