@@ -79,6 +79,34 @@ namespace DeviceStore.WebUI.Models
         [Display(Name = "Подтверждение пароля")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Имя")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Фамилия")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Город")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Улица")]
+        public string Street { get; set; }
+
+        [Required]
+        [Display(Name = "Номер дома")]
+        public string HouseNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Номер квартиры")]
+        public string ApartmentNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Номер телефона")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

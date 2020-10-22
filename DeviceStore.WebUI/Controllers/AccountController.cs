@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DeviceStore.WebUI.Models;
+using DeviceStore.Domain.AbstractModel;
+using DeviceStore.Domain.Entities;
 
 namespace DeviceStore.WebUI.Controllers
 {
@@ -17,6 +19,7 @@ namespace DeviceStore.WebUI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IRepository<Customer> _customerRepository;
 
         public AccountController()
         {
@@ -26,6 +29,11 @@ namespace DeviceStore.WebUI.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+        public AccountController(IRepository<Customer> customerRepository)
+        {
+            _customerRepository = customerRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -155,6 +163,22 @@ namespace DeviceStore.WebUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var customer = new Customer()
+                    {                        
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        City = model.City,
+                        Street = model.Street,
+                        HouseNumber = model.HouseNumber,
+                        ApartmentNumber = model.ApartmentNumber,
+                        PhoneNumber = model.PhoneNumber,
+                        Email = model.Email,
+                        UserId = user.Id,
+                    };
+
+                    _customerRepository.Insert(customer);
+                    _customerRepository.Commit();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Дополнительные сведения о включении подтверждения учетной записи и сброса пароля см. на странице https://go.microsoft.com/fwlink/?LinkID=320771.

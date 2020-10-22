@@ -13,5 +13,6 @@ namespace DeviceStore.Domain.EFConcrete
         public DbSet<Device> Devices { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<Customer> Customers { get; set; }       
     }
 }
