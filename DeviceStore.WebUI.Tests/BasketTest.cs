@@ -24,9 +24,12 @@ namespace DeviceStore.WebUI.Tests
 
             IRepository<Device> devices = new MemoryRepository<Device>();
             IRepository<Basket> baskets = new MemoryRepository<Basket>();
-            IBasketService basketService = new BasketService(devices, baskets);            
+            IRepository<Customer> customers = new MemoryRepository<Customer>();
+            IRepository<Order> orders = new MemoryRepository<Order>();
+            IBasketService basketService = new BasketService(devices, baskets);
+            IOrderService orderService = new OrderService(orders);
 
-            var controller = new BasketController(basketService);
+            var controller = new BasketController(basketService, orderService, customers);
             var httpContext = new HttpContext();
              
             controller.ControllerContext = new ControllerContext(httpContext, new RouteData(), controller);
@@ -45,7 +48,10 @@ namespace DeviceStore.WebUI.Tests
         {
             IRepository<Device> devices = new MemoryRepository<Device>();
             IRepository<Basket> baskets = new MemoryRepository<Basket>();
+            IRepository<Customer> customers = new MemoryRepository<Customer>();
+            IRepository<Order> orders = new MemoryRepository<Order>();
             IBasketService basketService = new BasketService(devices, baskets);
+            IOrderService orderService = new OrderService(orders);
 
             devices.Insert(new Device() { Id = "1", DevicePrice = 10000.00m });
             devices.Insert(new Device() { Id = "2", DevicePrice = 15000.00m });
@@ -56,7 +62,7 @@ namespace DeviceStore.WebUI.Tests
 
             baskets.Insert(basket);
 
-            var controller = new BasketController(basketService);
+            var controller = new BasketController(basketService, orderService, customers);
             var httpContext = new HttpContext();
             httpContext.Request.Cookies.Add(new System.Web.HttpCookie("myBasket") { Value = basket.Id });
 
