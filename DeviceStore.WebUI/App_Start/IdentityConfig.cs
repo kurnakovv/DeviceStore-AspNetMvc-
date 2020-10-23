@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using DeviceStore.WebUI.Models;
+using MimeKit;
+using MailKit.Net.Smtp;
+using System.Configuration;
 
 namespace DeviceStore.WebUI
 {
@@ -20,6 +23,35 @@ namespace DeviceStore.WebUI
         {
             // Подключите здесь службу электронной почты для отправки сообщения электронной почты.
             return Task.FromResult(0);
+        }
+
+        public async Task SendEmailAsync(string email, string subject, string message)
+        {
+            var emailMessage = new MimeMessage();
+
+            emailMessage.From.Add(new MailboxAddress("Администрация сайта DeviceStore", "Admin@gmail.com"));
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.Subject = subject;
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = message
+            };
+
+            using (var client = new SmtpClient())
+            {
+                string emailForSendingTheCheck =
+                    ConfigurationManager.AppSettings["EmailForSendingTheCheck"];
+                string passwordForSendingTheCheck =
+                    ConfigurationManager.AppSettings["PasswordForSendingTheCheck"];
+
+                await client.ConnectAsync("smtp.gmail.com", 465, true);
+                await client.AuthenticateAsync(emailForSendingTheCheck,
+                                               passwordForSendingTheCheck);
+
+                await client.SendAsync(emailMessage);
+
+                await client.DisconnectAsync(true);
+            }
         }
     }
 

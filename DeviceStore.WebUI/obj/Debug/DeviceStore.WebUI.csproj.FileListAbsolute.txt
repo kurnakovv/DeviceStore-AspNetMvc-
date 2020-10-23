@@ -136,3 +136,11 @@ D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\obj\Debug\DeviceStore.WebUI.pdb
 D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\DeviceStore.Domain.dll
 D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\DeviceStore.Domain.pdb
 D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\DeviceStore.Domain.dll.config
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\BouncyCastle.Crypto.dll
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\MailKit.dll
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\MimeKit.dll
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\BouncyCastle.Crypto.xml
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\MailKit.pdb
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\MailKit.xml
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\MimeKit.pdb
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI\bin\MimeKit.xml

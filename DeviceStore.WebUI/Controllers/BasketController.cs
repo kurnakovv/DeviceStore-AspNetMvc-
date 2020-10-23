@@ -5,6 +5,7 @@ using DeviceStore.Domain.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -85,7 +86,7 @@ namespace DeviceStore.WebUI.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult ToOrder(Order order)
+        public async Task<ActionResult> ToOrder(Order order)
         {
             List<BasketItemViewModel> basketItems =
                 _basketService.GetBasketItems(HttpContext);
@@ -94,6 +95,11 @@ namespace DeviceStore.WebUI.Controllers
             order.Email = User.Identity.Name;
 
             // Here we have to process the payment. Here is the lite version.  
+
+            EmailService emailService = new EmailService();
+            await emailService.SendEmailAsync(order.Email, 
+                "Вам пришел ваш чек",
+                $"Здраствуйте, ваш чек: <img><br/> {new { order.Id}}.");
 
             order.OrderStatus = "Платеж обработан";
             _orderService.CreateNewOrder(order, basketItems);
