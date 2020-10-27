@@ -1,4 +1,5 @@
-﻿using DeviceStore.WebUI.Models;
+﻿using DeviceStore.Domain.Model;
+using DeviceStore.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

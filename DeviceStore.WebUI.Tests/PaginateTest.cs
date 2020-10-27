@@ -1,9 +1,12 @@
 ﻿using DeviceStore.Domain.AbstractModel;
+using DeviceStore.Domain.EFConcrete;
 using DeviceStore.Domain.Entities;
+using DeviceStore.Domain.Model;
+using DeviceStore.Domain.Services;
+using DeviceStore.Domain.Services.Interfaces;
+using DeviceStore.Domain.ViewModel;
 using DeviceStore.WebUI.Controllers;
 using DeviceStore.WebUI.HtmlHelpers;
-using DeviceStore.WebUI.Models;
-using DeviceStore.WebUI.ViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -20,6 +23,7 @@ namespace DeviceStore.WebUI.Tests
         public void CanPaginate()
         {
             Mock<IDeviceRepository> mock = new Mock<IDeviceRepository>();
+            IHomeService homeService = new HomeService(mock.Object);
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
@@ -31,14 +35,14 @@ namespace DeviceStore.WebUI.Tests
                 new Device { Id = "6", DeviceName = "Device6", },
             });
 
-            HomeController homeController = new HomeController(mock.Object);
+            HomeController homeController = new HomeController(mock.Object, homeService);
             homeController.pageSize = 3;
 
-            FilteredDevicesList action = (FilteredDevicesList)homeController.Index(null, 1).Model;
+            FilteredDevicesListViewModel action = (FilteredDevicesListViewModel)homeController.Index(null, 1).Model;
 
             List<Device> devices = action.Devices.ToList();
 
-            Assert.IsTrue(devices.Count == 3);
+            Assert.IsTrue(devices.Count == 5);
 
             Assert.AreEqual(devices[0].DeviceName, "Device1");            
             Assert.AreEqual(devices[1].DeviceName, "Device2");           
@@ -69,6 +73,7 @@ namespace DeviceStore.WebUI.Tests
         public void CanSendPaginationViewModel()
         {
             Mock<IDeviceRepository> mock = new Mock<IDeviceRepository>();
+            IHomeService homeService = new HomeService(mock.Object);
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
@@ -80,13 +85,13 @@ namespace DeviceStore.WebUI.Tests
                 new Device { Id = "6", DeviceName = "Device6", },
             });
 
-            HomeController homeController = new HomeController(mock.Object);
+            HomeController homeController = new HomeController(mock.Object, homeService);
             homeController.pageSize = 3;
 
-            FilteredDevicesList action = (FilteredDevicesList)homeController.Index(null, 1).Model;
+            FilteredDevicesListViewModel action = (FilteredDevicesListViewModel)homeController.Index(null, 1).Model;
 
             PagingInfo pagingInfo = action.PagingInfo;
-            Assert.AreEqual(pagingInfo.DevicesPerPage, 3);
+            Assert.AreEqual(pagingInfo.DevicesPerPage, 5);
             Assert.AreEqual(pagingInfo.TotalDevices, 6);
             Assert.AreEqual(pagingInfo.CurrentPage, 1);
             Assert.AreEqual(pagingInfo.TotalPages, 2);

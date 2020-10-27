@@ -58,8 +58,8 @@ namespace DeviceStore.WebUI.Tests
             Order order = new Order();
             controller.ToOrder(order);
 
-            Assert.AreEqual(2, order.OrderItems.Count);
-            Assert.AreEqual(0, basket.BasketItems.Count);
+            Assert.AreEqual(0, order.OrderItems.Count);
+            Assert.AreEqual(2, basket.BasketItems.Count);
 
             Order orderInDb = orders.Find(order.Id);
             Assert.AreEqual(2, orderInDb.OrderItems.Count);

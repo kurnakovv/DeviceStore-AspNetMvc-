@@ -6,8 +6,10 @@ using System.Text;
 using System.Web.Mvc;
 using DeviceStore.Domain.AbstractModel;
 using DeviceStore.Domain.Entities;
+using DeviceStore.Domain.Services;
+using DeviceStore.Domain.Services.Interfaces;
+using DeviceStore.Domain.ViewModel;
 using DeviceStore.WebUI.Controllers;
-using DeviceStore.WebUI.ViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -20,6 +22,7 @@ namespace DeviceStore.WebUI.Tests
         public void CanFilterDevicesByCategory()
         {
             Mock<IDeviceRepository> mock = new Mock<IDeviceRepository>();
+            IHomeService homeService = new HomeService(mock.Object);
 
             mock.Setup(m => m.Devices).Returns(new List<Device>
             {
@@ -27,9 +30,9 @@ namespace DeviceStore.WebUI.Tests
                 new Device {Id = "2", DeviceName = "1212Device", DeviceCategory = "Category"},
                 new Device {Id = "3", DeviceName = "322", DeviceCategory = "Cat"},
             });
-            HomeController controller = new HomeController(mock.Object);
+            HomeController controller = new HomeController(mock.Object, homeService);
 
-            List<Device> action = ((FilteredDevicesList)controller.Index("Category", 1).Model).Devices.ToList();
+            List<Device> action = ((FilteredDevicesListViewModel)controller.Index("Category", 1).Model).Devices.ToList();
 
             Assert.AreEqual(action.Count(), 2);
 

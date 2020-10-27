@@ -35,6 +35,7 @@ namespace DeviceStore.WebUI.Infrastructure
         private void AddBindings()
         {
             _kernel.Bind<IDeviceRepository>().To<DeviceRepository>();
+            _kernel.Bind<IHomeService>().To<HomeService>();
             _kernel.Bind<IBasketService>().To<BasketService>();
             _kernel.Bind<IAdminService>().To<AdminService>();
             _kernel.Bind<IOrderService>().To<OrderService>();

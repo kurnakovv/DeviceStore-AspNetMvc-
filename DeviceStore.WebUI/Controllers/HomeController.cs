@@ -1,7 +1,8 @@
 ﻿using DeviceStore.Domain.AbstractModel;
 using DeviceStore.Domain.Entities;
-using DeviceStore.WebUI.Models;
-using DeviceStore.WebUI.ViewModel;
+using DeviceStore.Domain.Services;
+using DeviceStore.Domain.Services.Interfaces;
+using DeviceStore.Domain.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,48 +12,35 @@ namespace DeviceStore.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IHomeService _homeService;
         private IDeviceRepository _deviceRepository;
-        public int pageSize = 5;
+        public int pageSize = 5;       
 
-        public HomeController(IDeviceRepository deviceRepository)
+        public HomeController(IDeviceRepository deviceRepository, IHomeService homeService)
         {
             _deviceRepository = deviceRepository;
+            _homeService = homeService;
         }
 
         public ViewResult Index(string categoryDevices, int page = 1)
         {
-            FilteredDevicesList filteredDevicesList = new FilteredDevicesList
+            FilteredDevicesListViewModel filteredDevicesList = new FilteredDevicesListViewModel
             {
                 CurrentCategory = categoryDevices,
 
-                Devices = _deviceRepository.Devices.
-                        Where(c => categoryDevices == null
-                              || c.DeviceCategory == categoryDevices)
-                        .OrderBy(device => device.Id)
-                        .Skip((page - 1) * pageSize)
-                        .Take(pageSize),
+                Devices = _homeService.ListDevices(categoryDevices, page),
 
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = page,
-                    DevicesPerPage = pageSize,
-                    TotalDevices = categoryDevices == null ?
-                    _deviceRepository.Devices.Count() :
-                    _deviceRepository.Devices.Where(device => device.DeviceCategory == categoryDevices).Count()
-                },
+                PagingInfo = _homeService.PagingInfo(categoryDevices, page),
             };
 
             return View(filteredDevicesList);
         }
 
-        public ActionResult DevicesSearch(string deviceName)
+        public ActionResult DevicesSearch(string deviceName, IEnumerable<Device> devices)
         {
-            IEnumerable<Device> device = from m in _deviceRepository.Devices
-                                         select m;
-
             if (!string.IsNullOrEmpty(deviceName))
             {
-                device = device.Where(s => s.DeviceName.Contains(deviceName));
+                devices = _homeService.DeviceSearch(deviceName);
             }
             else
             {
@@ -60,7 +48,7 @@ namespace DeviceStore.WebUI.Controllers
                 return View("DevicesNotFound");
             }
 
-            return View(device);
+            return View(devices);
         }
 
         public ActionResult About()

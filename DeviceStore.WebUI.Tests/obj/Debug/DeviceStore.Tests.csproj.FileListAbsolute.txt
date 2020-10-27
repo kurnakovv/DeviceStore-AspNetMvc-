@@ -87,3 +87,11 @@ D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\ru\Microsoft.Owin.Ho
 D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\obj\Debug\DeviceStore.Tests.csproj.CopyComplete
 D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\obj\Debug\DeviceStore.WebUI.Tests.dll
 D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\obj\Debug\DeviceStore.WebUI.Tests.pdb
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\MimeKit.dll
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\MailKit.dll
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\BouncyCastle.Crypto.dll
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\MimeKit.pdb
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\MimeKit.xml
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\MailKit.pdb
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\MailKit.xml
+D:\C#\Asp Net\DeviceStore\DeviceStore.WebUI.Tests\bin\Debug\BouncyCastle.Crypto.xml

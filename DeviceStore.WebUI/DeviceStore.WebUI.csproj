@@ -210,10 +210,8 @@
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\FilteredDevicesList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DeviceStore.mdf" />
