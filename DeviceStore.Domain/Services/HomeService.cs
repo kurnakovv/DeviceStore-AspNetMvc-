@@ -50,7 +50,14 @@ namespace DeviceStore.Domain.Services
             IEnumerable<Device> devices = from m in _deviceRepository.Devices
                                          select m;
 
-            devices = devices.Where(s => s.DeviceName.Contains(deviceName));
+            if (devices.Where(x => x.DeviceName.Contains(deviceName)).Count() != 0 && !string.IsNullOrEmpty(deviceName))
+            {
+                devices = devices.Where(s => s.DeviceName.Contains(deviceName));
+            }
+            else
+            {
+                devices = null;
+            }
 
             return devices;
         }

@@ -6,6 +6,7 @@ using DeviceStore.Domain.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 
 namespace DeviceStore.WebUI.Controllers
@@ -13,8 +14,7 @@ namespace DeviceStore.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly IHomeService _homeService;
-        private IDeviceRepository _deviceRepository;
-        public int pageSize = 5;       
+        private IDeviceRepository _deviceRepository;   
 
         public HomeController(IDeviceRepository deviceRepository, IHomeService homeService)
         {
@@ -30,25 +30,24 @@ namespace DeviceStore.WebUI.Controllers
 
                 Devices = _homeService.ListDevices(categoryDevices, page),
 
-                PagingInfo = _homeService.PagingInfo(categoryDevices, page),
+                PagingInfo = _homeService.PagingInfo(categoryDevices, page),               
             };
 
             return View(filteredDevicesList);
         }
 
-        public ActionResult DevicesSearch(string deviceName, IEnumerable<Device> devices)
+        public ActionResult DevicesSearch(string deviceName)
         {
-            if (!string.IsNullOrEmpty(deviceName))
+            IEnumerable<Device> devices = _homeService.DeviceSearch(deviceName);
+
+            if (devices != null)
             {
-                devices = _homeService.DeviceSearch(deviceName);
+                return View(devices);
             }
             else
             {
-                // TODO: Devices not found (finish up)
                 return View("DevicesNotFound");
             }
-
-            return View(devices);
         }
 
         public ActionResult About()
