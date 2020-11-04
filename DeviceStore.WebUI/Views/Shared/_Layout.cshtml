@@ -8,7 +8,7 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - DeviceStore</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,38 +22,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("DeviceStore", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
                 @{
                     Html.RenderAction("BasketSummary", "Basket");
-                }                
+                    Html.RenderAction("SearchDevices", "Navigation");
+                }
             </div>
         </div>
     </div>
     <div id="categories">
         @Html.Action("CategoryMenu", "Navigation")
     </div>
-    <div id="search">
-        @using (Html.BeginForm("DevicesSearch", "Home"))
-        {
-            <p>
-                @Html.TextBox("deviceName") <br />
-                <input type="submit" value="Поиск устройства" />
-            </p>
-        }
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - DeviceStore ASP.NET</p>
         </footer>
     </div>
 

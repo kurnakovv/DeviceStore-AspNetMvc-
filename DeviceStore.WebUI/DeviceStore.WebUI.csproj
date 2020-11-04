@@ -383,6 +383,7 @@
     <Content Include="Views\Admin\RemoveDevice.cshtml" />
     <Content Include="Views\Basket\ToOrder.cshtml" />
     <Content Include="Views\Basket\ThankYou.cshtml" />
+    <Content Include="Views\Navigation\SearchDevices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceStore.Domain\DeviceStore.Domain.csproj">

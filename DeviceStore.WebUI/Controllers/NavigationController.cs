@@ -25,5 +25,10 @@ namespace DeviceStore.WebUI.Controllers
 
             return PartialView(categories);    
         }
+
+        public PartialViewResult SearchDevices()
+        {
+            return PartialView();
+        }
     }
 }
