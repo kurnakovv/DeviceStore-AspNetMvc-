@@ -13,7 +13,7 @@ namespace DeviceStore.Domain.Services
     public class HomeService : IHomeService
     {
         private readonly IDeviceRepository _deviceRepository;
-        private int pageSize = 5;
+        private int pageSize = 6;
 
         public HomeService(IDeviceRepository deviceRepository)
         {
