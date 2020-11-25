@@ -36,10 +36,44 @@ textarea {
 }
 
 .back-item {
-    width: 350px;
-    height: 350px;
-    padding: 10px;
-    margin: 10px;
-    border: solid #ff6a00;
+    width: 340px;
+    height: 329px;
+    top: 0;
+    left: 10px;
     background: #808080;
+}
+
+.device-block {
+    transform: scale(.90);
+    perspective: 500px;
+}
+
+.device-item {
+    position: relative;
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+}
+
+.side {
+    transition: all .3s ease;
+    display: block;
+    backface-visibility: hidden;
+}
+
+.front {
+    position: relative;
+}
+
+.back {
+    position: absolute;
+    transform: rotateY(180deg);
+}
+
+.front-img {
+    width: 330px;
+    height: 330px;
+}
+
+.flip {
+    transform: rotateY(180deg);
 }

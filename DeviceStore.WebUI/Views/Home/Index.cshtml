@@ -6,24 +6,32 @@
     ViewBag.Title = "Главная";
 }
 
-
 @foreach (Device d in @Model.Devices)
 {
-    <div class="col-lg-3 col-md-4 back-item">
-        <div class="col-md-12">
-            <h3 style="color:#111111">@d.DeviceName</h3>
-        </div>
-        <div class="col-md-12">
-            <h3>@d.DeviceCategory</h3>
-        </div>
-        <div class="col-md-12">
-            <p style="color:white">@d.DeviceDescription</p>
-        </div>
-        <div class="col-md-12">
-            <h4 style="color:#ffbe69">@d.DevicePrice.ToString("# руб.")</h4>
-        </div>
-        <div class="col-md-12">
-            <a href="@Url.Action("AddToBasket", "Basket", new { Id = d.Id })" class="btn btn-success">Добавить в корзину</a>
+    <div class="col-md-4">
+        <div class="device-block">
+            <div class="device-item">
+                <div class="side front">
+                    <img src="~/Content/ProductImages/@d.DeviceImage" class="front-img" />
+                </div>
+                <div class="side back back-item">
+                    <div class="col-md-12">
+                        <h3 style="color:#111111">@d.DeviceName</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <h3>@d.DeviceCategory</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <p style="color:white">@d.DeviceDescription</p>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 style="color:#ffbe69">@d.DevicePrice.ToString("# руб.")</h4>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="@Url.Action("AddToBasket", "Basket", new { Id = d.Id })" class="btn btn-success">Добавить в корзину</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
@@ -36,3 +44,6 @@
          page = x,
      }))
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="~/Scripts/flipElement.js"></script>
