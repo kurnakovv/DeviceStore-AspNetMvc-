@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #282828;
+    color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -76,4 +77,16 @@ textarea {
 
 .flip {
     transform: rotateY(180deg);
+}
+
+.panel {
+    background-color: #282828;
+}
+
+.panel-footer {
+    background-color: #282828;
+}
+
+.grey-modal {
+    background: #808080;
 }
