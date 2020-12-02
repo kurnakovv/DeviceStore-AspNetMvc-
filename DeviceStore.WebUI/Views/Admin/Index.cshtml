@@ -20,7 +20,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Создать новое устройство", "CreateDevice")
+    @Html.ActionLink("Создать новое устройство", "CreateDevice", new { }, new { @class= "btn btn-success" })
 </p>
 
 <table class="table">
@@ -68,9 +68,9 @@
                 <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@item.DeviceImage" />
             </td>
             <td>
-                @Html.ActionLink("Изменить", "EditDevice", new { id = item.Id }) |
-                @Html.ActionLink("Подробнее", "DetailsDevice", new { id = item.Id }, new { @class = "deviceEdit" }) |
-                @Html.ActionLink("Удалить", "RemoveDevice", new { id = item.Id }, new { @class = "deviceDelete"})
+                @Html.ActionLink("Изменить", "EditDevice", new { id = item.Id }, new { @class = "btn btn-success" }) 
+                @Html.ActionLink("Подробнее", "DetailsDevice", new { id = item.Id }, new { @class = "deviceEdit btn btn-primary" }) 
+                @Html.ActionLink("Удалить", "RemoveDevice", new { id = item.Id }, new { @class = "deviceDelete btn btn-danger" })
             </td>
         </tr>
     }
