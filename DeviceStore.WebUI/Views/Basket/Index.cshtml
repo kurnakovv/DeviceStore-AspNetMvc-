@@ -9,7 +9,7 @@
     }
 </style>
 
-    <table class="table">
+    <table class="table grey-modal">
         <tr>
             <th></th>
             <th>
@@ -24,7 +24,7 @@
             <th>
                 Конечная сумма
             </th>
-
+            <th></th>
         </tr>
 
         @if (Model.ToList().Count() != 0)
@@ -53,13 +53,13 @@
                 </tr>
             }
             <tr>
-                <td colspan="4" style="text-align:right"><strong>Всего в корзине</strong></td>
-                <td>@String.Format("{0:c}", (from d in Model select d.QuantityDevicesItems * d.Price).Sum())</td>
+                <td colspan="5" style="text-align:right"><strong>Всего в корзине</strong></td>
+                <td style="background-color: #5cb85c">@String.Format("{0:c}", (from d in Model select d.QuantityDevicesItems * d.Price).Sum())</td>
             </tr>                     
             }
         else
         {
-            <h3 class="text-center ">Корзина пуста.</h3>
+            <h3 class="text-center">Корзина пуста.</h3>
         }
     </table>
 
