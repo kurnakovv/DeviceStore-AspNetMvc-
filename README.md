@@ -1,5 +1,7 @@
 ***
 
+![MainHome](ImgForReadme/MainHomeImg.png)
+
 ## About the project:
 
 
@@ -52,12 +54,17 @@ Go to Web.config and paste the link into <connectionString>:
 ## Functional:
 -  Admin: 
  GRUD system.
+ ![MainAdmin](ImgForReadme/MainAdminImg.png)
+![ModalWindowAdmin](ImgForReadme/ModalWindowAdminImg.png)
 
 -  Home: 
-Gives a list of all products divided by Pagination, you can also split by categories and find manually via search.
+Gives a list of all products with rotate animation, divided by Pagination, you can also split by categories and find with the use of search.
+![MainHome](ImgForReadme/MainHomeImg.png)
 
 - Basket: 
 A basket with goods is created and deleted automatically (valid for 1 day).
+![MainBasket](ImgForReadme/MainBasketImg.png)
+
 #### Basket functionality:
 - View basket contents.
 - Add to basket.
@@ -77,9 +84,6 @@ https://github.com/Ulyanov-programmer
 ## Plans:
 
 #### UI:
-- Index.
-- Basket.
-- Admin.
 - OrderManager.
 
 #### Admin:
