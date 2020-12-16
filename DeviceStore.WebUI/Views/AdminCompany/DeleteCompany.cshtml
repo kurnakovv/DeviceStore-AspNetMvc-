@@ -1,32 +1,27 @@
 ﻿@model DeviceStore.Domain.Entities.Company
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Company</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+<div class="modal-content grey-modal">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Вы уверены что хотите удалить компанию @Model.Name?</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Фотография:</dt>
+            <dd>
+                <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@Model.Image" />
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dd>
-            <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@Model.Image" />
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <dd class="text-right">
+                @using (Html.BeginForm("DeleteCompany", "AdminCompany"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("Id", Model.Id)
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Удалить" class="btn btn-danger bottom-right" />
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
 </div>

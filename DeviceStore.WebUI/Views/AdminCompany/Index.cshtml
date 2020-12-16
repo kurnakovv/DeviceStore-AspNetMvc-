@@ -4,21 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-    <div id="message">
-        @if (TempData["messageEdit"] != null)
-        {
-            <div class="alert alert-success">@TempData["messageEdit"]</div>
-        }
-        else if (TempData["messageRemove"] != null)
-        {
-            <div class="alert alert-danger">@TempData["messageRemove"]</div>
-        }
-    </div>
+<div id="message">
+    @if (TempData["messageEdit"] != null)
+    {
+        <div class="alert alert-success">@TempData["messageEdit"]</div>
+    }
+    else if (TempData["messageRemove"] != null)
+    {
+        <div class="alert alert-danger">@TempData["messageRemove"]</div>
+    }
+</div>
 
-<h2>Index</h2>
+<div id="modelDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "CreateCompany")
+    @Html.ActionLink("Создать компанию", "CreateCompany", new { }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -31,20 +33,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@item.Image" />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditCompany", new { id=item.Id }) |
-            @Html.ActionLink("Details", "DetailsCompany", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteCompany", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@item.Image" />
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "EditCompany", new { id = item.Id }, new { @class = "btn btn-success" }) 
+                @Html.ActionLink("Подробнее", "DetailsCompany", new { id = item.Id, }, new { @class = "deviceEdit btn btn-primary" }) 
+                @Html.ActionLink("Удалить", "DeleteCompany", new { id = item.Id }, new { @class = "deviceDelete btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section scripts
+{
+    <script src="~/Scripts/window.js"></script>
+}

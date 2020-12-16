@@ -1,25 +1,20 @@
 ﻿@model DeviceStore.Domain.Entities.Company
 
-<div>
-    <h4>Company</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+<div class="modal-content grey-modal">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Подробнее о компании @Model.Name</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Фотография:</dt>
+            <dd>
+                <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@Model.Image" />
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dd>
-            <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@Model.Image" />
-        </dd>
-    </dl>
+            <dd class="text-right">
+                @Html.ActionLink("Изменить", "EditCompany", new { id = Model.Id }, new { @class = "btn btn-success" })
+            </dd>
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

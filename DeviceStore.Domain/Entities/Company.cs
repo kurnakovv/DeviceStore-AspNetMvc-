@@ -10,7 +10,9 @@ namespace DeviceStore.Domain.Entities
     public class Company : BaseEntity
     {
         [Required]
+        [Display(Name = "Имя компании")]
         public string Name { get; set; }
+        [Display(Name = "Фотография компании")]
         public string Image { get; set; }
         public virtual ICollection<Device> DevicesList { get; set; }
 

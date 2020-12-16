@@ -388,8 +388,8 @@
     <Content Include="Views\AdminCompany\Index.cshtml" />
     <Content Include="Views\AdminCompany\CreateCompany.cshtml" />
     <Content Include="Views\AdminCompany\EditCompany.cshtml" />
-    <Content Include="Views\AdminCompany\DetailsCompany.cshtml" />
     <Content Include="Views\AdminCompany\DeleteCompany.cshtml" />
+    <Content Include="Views\AdminCompany\DetailsCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceStore.Domain\DeviceStore.Domain.csproj">
