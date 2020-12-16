@@ -39,12 +39,14 @@ namespace DeviceStore.WebUI.Infrastructure
             _kernel.Bind<IBasketService>().To<BasketService>();
             _kernel.Bind<IAdminService>().To<AdminService>();
             _kernel.Bind<IOrderService>().To<OrderService>();
+            _kernel.Bind<IAdminCompanyService>().To<AdminCompanyService>();
 
             _kernel.Bind<IRepository<Basket>>().To<MemoryRepository<Basket>>();
             _kernel.Bind<IRepository<BasketItem>>().To<MemoryRepository<BasketItem>>();
             _kernel.Bind<IRepository<Device>>().To<MemoryRepository<Device>>();
             _kernel.Bind<IRepository<Customer>>().To<MemoryRepository<Customer>>();
             _kernel.Bind<IRepository<Order>>().To<MemoryRepository<Order>>();
+            _kernel.Bind<IRepository<Company>>().To<MemoryRepository<Company>>();
         }
     }
 }
