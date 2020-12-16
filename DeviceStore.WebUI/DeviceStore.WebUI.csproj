@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminCompanyController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -222,6 +223,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\RegisterLoginStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -383,6 +385,11 @@
     <Content Include="Views\Basket\ToOrder.cshtml" />
     <Content Include="Views\Basket\ThankYou.cshtml" />
     <Content Include="Views\Navigation\SearchDevices.cshtml" />
+    <Content Include="Views\AdminCompany\Index.cshtml" />
+    <Content Include="Views\AdminCompany\CreateCompany.cshtml" />
+    <Content Include="Views\AdminCompany\EditCompany.cshtml" />
+    <Content Include="Views\AdminCompany\DetailsCompany.cshtml" />
+    <Content Include="Views\AdminCompany\DeleteCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeviceStore.Domain\DeviceStore.Domain.csproj">
@@ -402,6 +409,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\CompanyImages\" />
     <Folder Include="Content\ProductImages\" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DeviceStore.Domain.Entities.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div id="message">
+        @if (TempData["messageEdit"] != null)
+        {
+            <div class="alert alert-success">@TempData["messageEdit"]</div>
+        }
+        else if (TempData["messageRemove"] != null)
+        {
+            <div class="alert alert-danger">@TempData["messageRemove"]</div>
+        }
+    </div>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateCompany")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@item.Image" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCompany", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsCompany", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteCompany", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
