@@ -2,6 +2,7 @@
 using DeviceStore.Domain.Entities;
 using DeviceStore.Domain.Services;
 using DeviceStore.Domain.Services.Interfaces;
+using DeviceStore.Domain.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,12 +17,15 @@ namespace DeviceStore.WebUI.Controllers
     {
         private readonly IDeviceRepository _deviceRepository;
         private readonly IAdminService _adminService;
+        private readonly IRepository<Company> _companyRepository;
 
         public AdminController(IDeviceRepository deviceRepository,
-                               IAdminService adminService)
+                               IAdminService adminService,
+                               IRepository<Company> companyRepository)
         {
             _deviceRepository = deviceRepository;
             _adminService = adminService;
+            _companyRepository = companyRepository;
         }
 
         public ViewResult Index()
@@ -29,18 +33,21 @@ namespace DeviceStore.WebUI.Controllers
             return View(_deviceRepository.Devices);
         }
 
-        public ViewResult EditDevice(Device device, string id)
+        public ViewResult EditDevice(string id)
         {
-            device = _deviceRepository.Devices
-               .FirstOrDefault(d => d.Id == id);
+            var model = new AdminViewModel
+            {
+                Device = _deviceRepository.Devices.FirstOrDefault(d => d.Id == id),
+                DeviceCompany = _companyRepository.Collection(),
+            };
 
-            return View(device);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditDevice(Device device, HttpPostedFileBase deviceImage = null)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 if (deviceImage != null)
@@ -50,7 +57,7 @@ namespace DeviceStore.WebUI.Controllers
 
                 _adminService.EditDevice(device);
                 TempData["messageEdit"] = string.Format("Изменения в устройстве \"{0}\" были сохранены", device.DeviceName);
-
+                
                 return RedirectToAction("Index");
             }
             else
@@ -61,20 +68,33 @@ namespace DeviceStore.WebUI.Controllers
 
         public ActionResult DetailsDevice(string id)
         {
-            Device device = _deviceRepository.Devices.FirstOrDefault(d => d.Id == id);
-            return PartialView(device);
+            AdminViewModel model = new AdminViewModel
+            {
+                Device = _deviceRepository.Devices.FirstOrDefault(d => d.Id == id),
+                DeviceCompany = _companyRepository.Collection(),
+            };
+            return PartialView(model);
         }
 
         public ViewResult CreateDevice()
         {
-            return View("EditDevice", new Device());
+            var model = new AdminViewModel
+            {
+                Device = new Device(),
+                DeviceCompany = _companyRepository.Collection(),
+            };
+            return View("EditDevice", model);
         }
 
         public ActionResult RemoveDevice(Device device, string id)
         {
-            device = _deviceRepository.Devices.FirstOrDefault(d => d.Id == id);
+            AdminViewModel model = new AdminViewModel
+            {
+                Device = _deviceRepository.Devices.FirstOrDefault(d => d.Id == id),
+                DeviceCompany = _companyRepository.Collection(),
+            };
 
-            return PartialView(device);
+            return PartialView(model);
         }
 
         [HttpPost]

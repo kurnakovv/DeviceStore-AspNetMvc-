@@ -24,6 +24,9 @@ namespace DeviceStore.Domain.Entities
         [Display(Name = "Категория")]
         public string DeviceCategory { get; set; }
 
+        public string CompanyId { get; set; }
+
+
         [Required(ErrorMessage = "Укажите количество устройств!")]
         [Display(Name = "Количество")]
         public int DeviceQuantity { get; set; }   

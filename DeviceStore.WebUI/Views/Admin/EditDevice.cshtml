@@ -1,16 +1,17 @@
-﻿@model Device
-@using DeviceStore.Domain.Entities
+﻿@model AdminViewModel
+@using DeviceStore.Domain.ViewModel
+
 @{
     ViewBag.Title = "EditDevice";
 }
 
 <div class="panel">
         <div class="panel-heading">
-            @if (@Model.DeviceName != null)
+            @if (Model.Device.DeviceName != null)
             {
-                <h3>Редактирование устройства "@Model.DeviceName"</h3>
+                <h3>Редактирование устройства "@Model.Device.DeviceName"</h3>
             }
-            else if (Model.DeviceName == null)
+            else if (Model.Device.DeviceName == null)
             {
                 <h3>Создание нового устройства</h3>
             }
@@ -22,58 +23,66 @@
             @Html.AntiForgeryToken()
             
             <div>
-                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.Device.Id)
                 <div class="form-horizontal">
                     <hr />
                     @*TODO: Fix the error when "required" is activated immediately*@
                     @Html.ValidationSummary()
-                    <hr/>
+                    <hr />
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DeviceName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Device.DeviceName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.DeviceName, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DeviceDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DeviceDescription, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Device.DeviceName, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DeviceCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Device.DeviceDescription, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.DeviceCategory, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Device.DeviceDescription, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DeviceQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Device.DeviceCategory, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.DeviceQuantity, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DeviceFavorites, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DeviceFavorites, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DevicePrice, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DevicePrice, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Device.DeviceCategory, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DeviceImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Device.DeviceQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <img class="default-img" src="~/Content/ProductImages/@Model.DeviceImage" />
-                            <div>@Model.DeviceImage</div>
+                            @Html.EditorFor(model => model.Device.DeviceQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Device.DeviceFavorites, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Device.DeviceFavorites, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Device.DevicePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Device.DevicePrice, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Device.CompanyId, "Компания", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Device.CompanyId, new SelectList(Model.DeviceCompany, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Device.CompanyId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Device.DeviceImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <img class="default-img" src="~/Content/ProductImages/@Model.Device.DeviceImage" />
+                            <div>@Model.Device.DeviceImage</div>
                         </div>
                     </div>
 

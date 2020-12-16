@@ -1,36 +1,34 @@
-﻿@model DeviceStore.Domain.Entities.Device
+﻿@model DeviceStore.Domain.ViewModel.AdminViewModel
 
 <div class="modal-content grey-modal">
     <div class="modal-header">
         <button class="close" data-dismiss="modal" area-hidden="true">X</button>
-        <h4>Вы уверены что хотите удалить модель устройства "@Model.DeviceName"?</h4>
+        <h4>Вы уверены что хотите удалить модель устройства "@Model.Device.DeviceName"?</h4>
     </div>
     <div class="modal-body">
         <dl class="dl-horizontal">
             <dt>Описание:</dt>
-            <dd>@Html.DisplayFor(model => model.DeviceDescription)<hr /></dd>
+            <dd>@Html.DisplayFor(model => model.Device.DeviceDescription)<hr /></dd>
 
             <dt>Категория:</dt>
-            <dd>@Html.DisplayFor(model => model.DeviceCategory)<hr /></dd>
+            <dd>@Html.DisplayFor(model => model.Device.DeviceCategory)<hr /></dd>
 
             <dt>Количество:</dt>
-            <dd>@Html.DisplayFor(model => model.DeviceQuantity)<hr /></dd>
-
+            <dd>@Html.DisplayFor(model => model.Device.DeviceQuantity)<hr /></dd>
 
             <dt>Цена:</dt>
-            <dd>@Html.DisplayFor(model => model.DevicePrice)<hr /></dd>
-
+            <dd>@Html.DisplayFor(model => model.Device.DevicePrice)<hr /></dd>
 
             <dt>Фотография:</dt>
             <dd>
-                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@Model.DeviceImage" />
+                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@Model.Device.DeviceImage" />
             </dd>
 
             <dd class="text-right">
                 @using (Html.BeginForm("RemoveDevice", "Admin"))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.Hidden("Id", Model.Id)
+                    @Html.Hidden("Id", Model.Device.Id)
                     <input type="submit"
                            class="btn btn-danger"
                            value="Удалить">
