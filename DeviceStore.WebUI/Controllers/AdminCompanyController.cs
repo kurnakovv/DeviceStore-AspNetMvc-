@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace DeviceStore.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminCompanyController : Controller
     {
         private readonly IAdminCompanyService _adminCompanyService;
