@@ -31,13 +31,38 @@ Go to the DeviceStore.WebUI / App_Data / folder, find the DeviceStore.mdf file a
 ##### 2
 Go to Web.config and paste the link into <connectionString>:
 
-```
+``` xml
 <connectionStrings>
     <add name="AppDbContext"
          connectionString="Your way for db"
          providerName="System.Data.SqlClient"/>
   </connectionStrings>
 ```
+
+## How to use admin account:
+
+#### 1
+Go to the address bar and enter: Admin/Index or AdminCompany/Index (1 for devices 2 for companies)
+#### 2
+Enter email: admin@gmail.com
+Enter password: 123456
+
+You can change in Web.config
+
+``` xml
+<add key="adminEmail" value="admin@gmail.com"/>
+<add key="adminPassword" value="123456"/>
+```
+
+#### How to send check order by email:
+Go to the config and enter your email and password (Unreliable applications that have access to the account must be enabled):
+
+``` xml
+	<!--Your email and password-->
+    <add key="EmailForSendingTheCheck" value="email"/> <!-- enter to "key"-->
+    <add key="PasswordForSendingTheCheck" value="password"/>
+```
+After that, all check orders will be sent to the user by email.
 
 ---
 
