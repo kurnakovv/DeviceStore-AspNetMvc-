@@ -24,7 +24,8 @@ namespace DeviceStore.Domain.Services
             if (companyContext != null)
             {
                 companyContext.Name = company.Name;
-                companyContext.Image = company.Image;
+                if(company.Image != null)
+                    companyContext.Image = company.Image;
                 //_companyRepository.Update(company); // Dont work
                 _companyRepository.Commit();
             }

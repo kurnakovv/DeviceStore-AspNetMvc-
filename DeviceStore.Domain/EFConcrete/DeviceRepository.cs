@@ -28,7 +28,8 @@ namespace DeviceStore.Domain.EFConcrete
                     deviceContext.DeviceQuantity = device.DeviceQuantity;
                     deviceContext.DeviceFavorites = device.DeviceFavorites;
                     deviceContext.DevicePrice = device.DevicePrice;
-                    deviceContext.DeviceImage = device.DeviceImage;
+                    if(device.DeviceImage != null)
+                        deviceContext.DeviceImage = device.DeviceImage;
                     deviceContext.CompanyId = device.CompanyId;
                 }
                 else if(deviceContext == null)
