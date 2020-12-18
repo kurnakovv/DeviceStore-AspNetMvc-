@@ -100,12 +100,17 @@ namespace DeviceStore.WebUI.Controllers
         {
             if (companyImage != null)
             {
-                var fileName = Path.GetFileName(companyImage.FileName);
-                var directoryToSave = Server.MapPath(Url.Content("~/Content/CompanyImages/"));
+                var allowedExtensions = new List<string> { ".jpeg", ".png", ".jpg" };
+                var fileExtension = Path.GetExtension(companyImage.FileName);
+                if (allowedExtensions.Contains(fileExtension))
+                {
+                    var fileName = Path.GetFileName(companyImage.FileName);
+                    var directoryToSave = Server.MapPath(Url.Content("~/Content/CompanyImages/"));
 
-                var pathToSave = Path.Combine(directoryToSave, fileName);
-                companyImage.SaveAs(pathToSave);
-                company.Image = fileName;
+                    var pathToSave = Path.Combine(directoryToSave, fileName);
+                    companyImage.SaveAs(pathToSave);
+                    company.Image = fileName;
+                }
             }
         }
     }
