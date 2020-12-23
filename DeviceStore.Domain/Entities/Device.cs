@@ -36,7 +36,7 @@ namespace DeviceStore.Domain.Entities
         public bool DeviceFavorites { get; set; }
 
         [Required(ErrorMessage = "Укажите цену устройства!")]
-        [Display(Name = "Цена")]
+        [Display(Name = "Цена (например 1.01)")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены!")]
         public decimal DevicePrice { get; set; }
 
