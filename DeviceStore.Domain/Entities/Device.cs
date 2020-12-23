@@ -29,6 +29,7 @@ namespace DeviceStore.Domain.Entities
 
         [Required(ErrorMessage = "Укажите количество устройств!")]
         [Display(Name = "Количество")]
+        [Range(0, 10000, ErrorMessage = "Пожалуйста, введите положительное значение количества (0 - 10000)!")]
         public int DeviceQuantity { get; set; }   
         
         [Display(Name = "Закладка")]
