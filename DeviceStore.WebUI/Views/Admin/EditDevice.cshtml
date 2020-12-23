@@ -2,7 +2,7 @@
 @using DeviceStore.Domain.ViewModel
 
 @{
-    ViewBag.Title = "EditDevice";
+    ViewBag.Title = $"Изменить устройство {Model.Device.DeviceName}";
 }
 
 <div class="panel">
@@ -72,7 +72,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Device.CompanyId, "Компания", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="col-md-10" style="color: black">
                             @Html.DropDownListFor(model => model.Device.CompanyId, new SelectList(Model.DeviceCompany, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Device.CompanyId, "", new { @class = "text-danger" })
                         </div>
