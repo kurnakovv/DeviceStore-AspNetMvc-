@@ -50,13 +50,19 @@ namespace DeviceStore.WebUI.Controllers
         {            
             if (ModelState.IsValid)
             {
+                AdminViewModel model = new AdminViewModel
+                {
+                    Device = device,
+                    DeviceCompany = _companyRepository.Collection(),
+                };
+
                 if (deviceImage != null)
                 {
-                    AddImage(device, deviceImage);
+                    AddImage(model.Device, deviceImage);
                 }
 
-                _adminService.EditDevice(device);
-                TempData["messageEdit"] = string.Format("Изменения в устройстве \"{0}\" были сохранены", device.DeviceName);
+                _adminService.EditDevice(model.Device);
+                TempData["messageEdit"] = string.Format("Изменения в устройстве \"{0}\" были сохранены", model.Device.DeviceName);
                 
                 return RedirectToAction("Index");
             }
