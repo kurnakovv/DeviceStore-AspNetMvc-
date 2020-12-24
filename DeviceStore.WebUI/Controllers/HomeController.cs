@@ -14,11 +14,9 @@ namespace DeviceStore.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly IHomeService _homeService;
-        private IDeviceRepository _deviceRepository;   
 
-        public HomeController(IDeviceRepository deviceRepository, IHomeService homeService)
+        public HomeController(IHomeService homeService)
         {
-            _deviceRepository = deviceRepository;
             _homeService = homeService;
         }
 
@@ -48,6 +46,17 @@ namespace DeviceStore.WebUI.Controllers
             {
                 return View("DevicesNotFound");
             }
+        }
+
+        public ActionResult DeviceDetails(string id)
+        {
+            if (id != null)
+            {
+                Device device = _homeService.GetDeviceById(id);
+                return PartialView(device);
+            }
+
+            return HttpNotFound();
         }
     }
 }

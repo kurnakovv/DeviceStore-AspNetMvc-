@@ -13,5 +13,6 @@ namespace DeviceStore.Domain.Services.Interfaces
         IEnumerable<Device> ListDevices(string categoryDevices, int page);
         PagingInfo PagingInfo(string categoryDevices, int page);
         IEnumerable<Device> DeviceSearch(string deviceName);
+        Device GetDeviceById(string id);
     }
 }

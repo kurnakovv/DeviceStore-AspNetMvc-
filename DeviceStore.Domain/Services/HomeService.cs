@@ -61,5 +61,11 @@ namespace DeviceStore.Domain.Services
 
             return devices;
         }
+
+        public Device GetDeviceById(string id)
+        {
+            Device device = _deviceRepository.Devices.FirstOrDefault(d => d.Id == id);
+            return device;
+        }
     }
 }

@@ -6,6 +6,10 @@
     ViewBag.Title = "Главная";
 }
 
+<div id="modelDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
 @foreach (Device d in @Model.Devices)
 {
     <div class="col-lg-4 col-md-6" style="display:flex">
@@ -29,6 +33,7 @@
                     </div>
                     <div class="col-md-12">
                         <a href="@Url.Action("AddToBasket", "Basket", new { Id = d.Id })" class="btn btn-success">Добавить в корзину</a>
+                        <a href="@Url.Action("DeviceDetails", "Home", new { Id = d.Id })" class="deviceEdit btn btn-info right">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -47,3 +52,4 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="~/Scripts/flipElement.js"></script>
+<script src="~/Scripts/window.js"></script>
