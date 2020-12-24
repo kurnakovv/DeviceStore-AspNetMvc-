@@ -18,8 +18,10 @@ namespace DeviceStore.WebUI.Models
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             var role1 = new IdentityRole { Name = "Admin" };
+            var role2 = new IdentityRole { Name = "User" };
 
             roleManager.Create(role1);
+            roleManager.Create(role2);
 
             var admin = new ApplicationUser
             {
