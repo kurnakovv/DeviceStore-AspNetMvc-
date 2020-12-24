@@ -33,6 +33,7 @@ namespace DeviceStore.WebUI.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult AddToBasket(string id)
         {
             _basketService.AddToBasket(HttpContext, id);
@@ -40,6 +41,7 @@ namespace DeviceStore.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult RemoveFromBasket(string id)
         {
             _basketService.RemoveFromBasket(HttpContext, id);
@@ -54,7 +56,8 @@ namespace DeviceStore.WebUI.Controllers
             return PartialView("BasketSummary", basketSummary);
         }
 
-        [Authorize]
+        //[Authorize]
+        [Authorize(Roles = "User")]
         public ActionResult ToOrder()
         {
             Customer customer = _customerRepository
@@ -85,7 +88,7 @@ namespace DeviceStore.WebUI.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> ToOrder(Order order)
         {
             List<BasketItemViewModel> basketItems =
@@ -108,6 +111,7 @@ namespace DeviceStore.WebUI.Controllers
             return RedirectToAction("ThankYou", new { OrderId = order.Id });
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult ThankYou(string orderId)
         {
             ViewBag.OrderId = orderId;
