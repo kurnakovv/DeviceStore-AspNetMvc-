@@ -1,4 +1,5 @@
 ﻿using DeviceStore.Domain.AbstractModel;
+using DeviceStore.Domain.EFConcrete;
 using DeviceStore.Domain.Entities;
 using DeviceStore.Domain.Services;
 using DeviceStore.Domain.Services.Interfaces;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace DeviceStore.WebUI.Controllers
 {
@@ -28,7 +30,9 @@ namespace DeviceStore.WebUI.Controllers
 
                 Devices = _homeService.ListDevices(categoryDevices, page),
 
-                PagingInfo = _homeService.PagingInfo(categoryDevices, page),               
+                PagingInfo = _homeService.PagingInfo(categoryDevices, page),
+
+                Company = _homeService.DeviceCompany(),
             };
 
             return View(filteredDevicesList);
@@ -52,8 +56,12 @@ namespace DeviceStore.WebUI.Controllers
         {
             if (id != null)
             {
-                Device device = _homeService.GetDeviceById(id);
-                return PartialView(device);
+                DetailsDeviceViewModel model = new DetailsDeviceViewModel
+                {
+                    Device = _homeService.GetDeviceById(id),
+                    Company = _homeService.DeviceCompany(),
+                };
+                return PartialView(model);
             }
 
             return HttpNotFound();

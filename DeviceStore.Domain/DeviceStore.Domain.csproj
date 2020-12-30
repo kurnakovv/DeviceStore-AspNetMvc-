@@ -102,6 +102,7 @@
     <Compile Include="ViewModel\BasketItemViewModel.cs" />
     <Compile Include="ViewModel\BasketSummaryViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\DetailsDeviceViewModel.cs" />
     <Compile Include="ViewModel\FilteredDevicesListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

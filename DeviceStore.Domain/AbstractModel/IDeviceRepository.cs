@@ -12,5 +12,6 @@ namespace DeviceStore.Domain.AbstractModel
         IEnumerable<Device> Devices { get; }
         void SaveOrEditDevice(Device device);
         Device DeleteDevice(string deviceId);
+        IEnumerable<Device> DeviceCompany();
     }
 }

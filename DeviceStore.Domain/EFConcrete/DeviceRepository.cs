@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DeviceStore.Domain.EFConcrete
 {
@@ -50,6 +51,12 @@ namespace DeviceStore.Domain.EFConcrete
                 appDbContext.SaveChanges();
             }
             return device;
-        }        
+        }       
+        
+        public IEnumerable<Device> DeviceCompany()
+        {
+            var devices = appDbContext.Devices.Include(d => d.Company);
+            return devices.ToList();
+        }
     }
 }

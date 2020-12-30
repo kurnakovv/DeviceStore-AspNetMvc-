@@ -26,6 +26,8 @@ namespace DeviceStore.Domain.Entities
 
         public string CompanyId { get; set; }
 
+        [Display(Name = "Компания")]
+        public Company Company { get; set; }
 
         [Required(ErrorMessage = "Укажите количество устройств!")]
         [Display(Name = "Количество")]

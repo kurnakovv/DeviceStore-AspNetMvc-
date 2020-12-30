@@ -14,5 +14,6 @@ namespace DeviceStore.Domain.Services.Interfaces
         PagingInfo PagingInfo(string categoryDevices, int page);
         IEnumerable<Device> DeviceSearch(string deviceName);
         Device GetDeviceById(string id);
+        IEnumerable<Device> DeviceCompany();
     }
 }

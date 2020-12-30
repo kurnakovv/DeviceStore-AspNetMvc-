@@ -1,32 +1,40 @@
 ﻿
-@model DeviceStore.Domain.Entities.Device
+@model DeviceStore.Domain.ViewModel.DetailsDeviceViewModel
 
 <div class="modal-content grey-modal">
     <div class="modal-header">
         <button class="close" data-dismiss="modal" area-hidden="true">X</button>
-        <h4>Модель устройства "@Model.DeviceName"</h4>
+        <h4>Модель устройства "@Model.Device.DeviceName"</h4>
     </div>
     <div class="modal-body">
         <dl class="dl-horizontal">
             <dt>Описание:</dt>
-            <dd>@Html.DisplayFor(model => model.DeviceDescription)<hr /></dd>
+            <dd>@Html.DisplayFor(model => model.Device.DeviceDescription)<hr /></dd>
 
             <dt>Категория:</dt>
-            <dd>@Html.DisplayFor(model => model.DeviceCategory)<hr /></dd>
+            <dd>@Html.DisplayFor(model => model.Device.DeviceCategory)<hr /></dd>
+
+            <dt>Копмания:</dt>
+            <dd>@Html.DisplayFor(model => model.Device.Company.Name)<hr /></dd>
+
+            <dt>Фотография компании:</dt>
+            <dd>
+                <img class="mini-img-with-orange-border" src="~/Content/CompanyImages/@Model.Device.Company.Image" />
+            </dd>
 
             <dt>Количество:</dt>
-            <dd>@Html.DisplayFor(model => model.DeviceQuantity)<hr /></dd>
+            <dd>@Html.DisplayFor(model => model.Device.DeviceQuantity)<hr /></dd>
 
             <dt>Цена:</dt>
-            <dd>@Html.DisplayFor(model => model.DevicePrice)<hr /></dd>
+            <dd>@Html.DisplayFor(model => model.Device.DevicePrice)<hr /></dd>
 
             <dt>Фотография:</dt>
             <dd>
-                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@Model.DeviceImage" />
+                <img class="mini-img-with-orange-border" src="~/Content/ProductImages/@Model.Device.DeviceImage" />
             </dd>
 
             <dd class="text-right">
-                @Html.ActionLink("Добавить в корзину", "AddToBasket", "Basket", new { id = Model.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Добавить в корзину", "AddToBasket", "Basket", new { id = Model.Device.Id }, new { @class = "btn btn-success" })
             </dd>
         </dl>
     </div>
