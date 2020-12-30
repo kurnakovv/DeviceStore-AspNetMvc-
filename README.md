@@ -208,6 +208,10 @@ After that, all check orders will be sent to the user by email.
  GRUD system.
  ![MainAdmin](ImgForReadme/MainAdminImg.png)
 ![ModalWindowAdmin](ImgForReadme/ModalWindowAdminImg.png)
+- Admin company:
+CRUD system.
+The device has a company
+![MainAdminCompany](ImgForReadme/MainAdminCompanyImg.png)
 
 -  Home: 
 Gives a list of all products with rotate animation, divided by Pagination, you can also split by categories and find with the use of search.
@@ -244,7 +248,6 @@ https://github.com/Ulyanov-programmer
 
 #### Entities:
 - Categories.
-- Author.
 
 #### General:
 
