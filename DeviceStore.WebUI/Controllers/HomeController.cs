@@ -40,11 +40,15 @@ namespace DeviceStore.WebUI.Controllers
 
         public ActionResult DevicesSearch(string deviceName)
         {
-            IEnumerable<Device> devices = _homeService.DeviceSearch(deviceName);
-
-            if (devices != null)
+            FilteredDevicesListViewModel model = new FilteredDevicesListViewModel
             {
-                return View(devices);
+                Devices = _homeService.DeviceSearch(deviceName),
+                Company = _homeService.DeviceCompany(),
+            };
+
+            if (model.Devices != null)
+            {
+                return View(model);
             }
             else
             {
