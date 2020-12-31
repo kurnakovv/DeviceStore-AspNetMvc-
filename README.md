@@ -160,10 +160,10 @@ values
 #### 4 Change connection string in web.config:
 ``` xml
 <connectionStrings>
-    <add name="AppDbContext"
+	<add name="AppDbContext"
          connectionString="Your way for db"
          providerName="System.Data.SqlClient"/>
-  </connectionStrings>
+</connectionStrings>
 ```
 
 ## How to use admin account:
@@ -185,9 +185,9 @@ You can change in Web.config
 Go to the config and enter your email and password (Unreliable applications that have access to the account must be enabled):
 
 ``` xml
-	<!--Your email and password-->
-    <add key="EmailForSendingTheCheck" value="email"/> <!-- enter to "key"-->
-    <add key="PasswordForSendingTheCheck" value="password"/>
+<!--Your email and password-->
+<add key="EmailForSendingTheCheck" value="email"/> <!-- enter to "key"-->
+<add key="PasswordForSendingTheCheck" value="password"/>
 ```
 After that, all check orders will be sent to the user by email.
 
